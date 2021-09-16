@@ -1,7 +1,6 @@
 # Importing the necessary Python libraries
 import pickle
 import pandas as pd
-from helpers import *
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
@@ -31,7 +30,7 @@ async def predict(request: Request):
     input_df = pd.DataFrame([input_data])
 
     # Generating prediction from the model
-    pred = rfc_pipeline.predict(input_df)
+    pred = int(rfc_pipeline.predict(input_df)[0])
 
     # Returning the prediction back to the caller
     return JSONResponse({'prediction': pred})
