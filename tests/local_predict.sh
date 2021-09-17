@@ -1,1 +1,0 @@
-curl --header "Content-Type: application/json" --request POST --data @test_data.json -k "http://localhost:8080/invocations"

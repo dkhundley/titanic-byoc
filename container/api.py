@@ -1,5 +1,5 @@
 # Importing the necessary Python libraries
-import pickle
+import cloudpickle
 import pandas as pd
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
@@ -8,12 +8,12 @@ from fastapi.responses import JSONResponse
 
 ## API SETUP AND INSTANTIATION
 ## ---------------------------------------------------------------------------------------------------------------------
-# Instantiating FastAPI
+# Instantiating the FastAPI object
 api = FastAPI()
 
-# Loading the Titanic trained model
+# Loading the Titanic model from serialized pickle file
 with open('../models/rfc_pipeline.pkl', 'rb') as f:
-    rfc_pipeline = pickle.load(f)
+    rfc_pipeline = cloudpickle.load(f)
 
 
 
@@ -23,18 +23,17 @@ with open('../models/rfc_pipeline.pkl', 'rb') as f:
 @api.post('/invocations')
 async def predict(request: Request):
 
-    # Get the JSON response from the body of the request
-    input_data = await request.json()
+    # Getting the JSON from the body of the request
+    input_json = await request.json()
 
-    # Transforming the input JSON data into a Pandas DataFrame
-    input_df = pd.DataFrame([input_data])
+    # Transforming the input JSON into a Pandas DataFrame
+    input_df = pd.DataFrame(input_json)
 
-    # Generating prediction from the model
+    # Getting the prediction from the Titanic model
     pred = int(rfc_pipeline.predict(input_df)[0])
 
     # Returning the prediction back to the caller
-    return JSONResponse({'prediction': pred})
-
+    return JSONResponse({'survival_prediction': pred})
 
 # Defining the health endpoint
 @api.get('/ping')
