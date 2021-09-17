@@ -31,3 +31,4 @@ model_path = os.path.join(prefix, 'model')
 
 ## MODEL TRAIN SCRIPT
 ## ---------------------------------------------------------------------------------------------------------------------
+# https://github.com/aws/amazon-sagemaker-examples/blob/master/advanced_functionality/scikit_bring_your_own/container/decision_trees/train
