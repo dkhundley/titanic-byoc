@@ -1,12 +1,16 @@
 # Instantiating the base image
 FROM python:3.9-slim-buster
 
-# Installing our dependencies
+# Installing Linux dependencies
+RUN apt-get --yes update
+RUN apt-get --yes install gcc libxml2
+
+# Installing Python dependencies
 COPY dependencies/requirements.txt /
 RUN pip install -r /requirements.txt
 
 # Setting the environment variables required by AWS SageMaker
-ENV PYTHONBUFFERED=TRUE
+ENV PYTHONUNBUFFERED=TRUE
 ENV PYTHONDONTWRITEBYTECODE=TRUE
 ENV PATH="/opt/program:${PATH}"
 
@@ -14,7 +18,7 @@ ENV PATH="/opt/program:${PATH}"
 EXPOSE 8080
 
 # Moving the project files from local into Docker image
-COPY models/ /opt/program
+COPY models/ /opt/models
 COPY container/ /opt/program
 
 # Setting the working directory to be "opt/program/"
