@@ -9,9 +9,13 @@ This project is intended to teach others how to deploy a machine learning model 
 
 While a rather grim topic, the Titanic dataset is a popular choice amongst students because it is relatively easy to understand the data. This dataset covers [the tragedy of the Titanic](https://en.wikipedia.org/wiki/Titanic) sinking to the bottom of the ocean in 1912. You might wondering, "Isn't this the same tragedy that was covered in the popular 1997 film starring Kate Winslet and Leo DiCaps?" Why yes, my friend, tis indeed the same tragedy.
 
+
+
 <p align="center">
 <img src="https://media.giphy.com/media/XOY5y7YXjTD7q/giphy.gif">
 </p>
+
+
 
 The Titanic dataset contains individual records about every individual who was aboard the Titanic along with attributes known about each individual. (See the section below on data to learn more.) As touched on above, the dataset contains a binary "Survived / Did Not Survive" column, which students use as the predictor value for creating binary classification models.
 
