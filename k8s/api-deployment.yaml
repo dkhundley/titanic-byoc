@@ -1,0 +1,62 @@
+# Defining the deployment / pod for the Titanic API
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: titanic-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: titanic-api
+  template:
+    metadata:
+      labels:
+        app: titanic-api
+    spec:
+      containers:
+        - name: titanic-api
+          image: titanic-byoc:dev
+          imagePullPolicy: IfNotPresent
+          command: ["serve"]
+          ports:
+          - name: http
+            containerPort: 8080
+            protocol: TCP
+          resources:
+            requests:
+              cpu: "500m"
+---
+# Defining the service that connects the Titanic deployment / pod to the ingress
+apiVersion: v1
+kind: Service
+metadata:
+  name: titanic-api-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: titanic-api
+---
+# Defining the ingress from the Titanic pod / service to the outside world
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: titanic-api-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: titanic-api.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: titanic-api-service
+                port:
+                  number: 8080
