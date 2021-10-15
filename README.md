@@ -48,8 +48,8 @@ The following is how this particular GitHub's directory's contents are organized
 - **tests/**: Contains files supporting proper testing of our software solutions
 
 
-# Data Dictionary
 
+# Data Dictionary
 As mentioned above, this dataset was [sourced from Kaggle](https://www.kaggle.com/c/titanic/data). For your convenience, I have placed the raw datasets (`train.csv` and `test.csv`) in the `data/raw/` directory of this repository. Additionally, I have also shared the same data dictionary here as part of this repo, and I also note in the table below whether or not the feature is included as part of the end model.
 
 | **Feature Name** | **Description** | **Key** | **Included in Model?** |
