@@ -24,14 +24,28 @@ The general sequence for this project will shake out as the following:
 - Packaging the FastAPI implementation along with the model itself in a **standalone Docker container**
 - Deploying the model to **Kubernetes** as a real-time endpoint
 - Deploying the model to AWS as a **SageMaker real-time endpoint**
+- Deploying the model to **Google Cloud Platform** as a real-time endpoint
 
 And I haven't committed to the following yet, but I think it'd also be cool to maybe eventually do the following. Let me know if anybody has interest in exploring any of these topics as part of a future livestream:
 
 - Training the model directly in AWS SageMaker using a **SageMaker training job**
-- Deploying the model to **Google Cloud Platform** as a real-time endpoint
 - Deploying the model to **Kubernetes** as a scheduled batch cronjob
 - Deploying the model to AWS as a **scheduled SageMaker batch inference job**
+- Deploying the model to **Google Cloud Platform** as a scheduled batch cronjob
 
+
+
+# Directory Structure
+The following is how this particular GitHub's directory's contents are organized:
+- **container/**: Contains all the relevant files that will be injected into our BYOC container for training and inference
+- **data/**: Contains the supporting data for this project, both in raw and cleaned formats
+- **dependencies/**: Contains any files that help support the software solution, including installation dependencies
+- **docs/**: Contains random files helping to support this project, including things like images and diagrams
+- **k8s/**: Contains the YAML files used to deploy our Titanic model to Kubernetes (often abbreviated to "K8s")
+- **models/**: Contains the serialized model files created as part of our model training pipeline
+- **notebooks/**: Contains the Jupyter notebooks used to support each step of this project
+- **terraform/**: Contains all the Terraform files used to deploy the Titanic model out to various platforms, including AWS and GCP
+- **tests/**: Contains files supporting proper testing of our software solutions
 
 
 # Data Dictionary
