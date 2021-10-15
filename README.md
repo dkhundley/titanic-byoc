@@ -4,7 +4,7 @@ Hello there friends! In this project, we are going to go through the process sta
 
 
 
-## Project Scope
+# Project Scope
 This project is intended to teach others how to deploy a machine learning model across multiple different platforms in multiple different contexts using a "bring your own container" (BYOC) with the Titanic dataset. The Titanic dataset is a very popular dataset supported on the Kaggle platform ([link](https://www.kaggle.com/c/titanic)) often used by students to practice their machine learning / data science skills specifically for supervised, binary classification algorithms.
 
 While a rather grim topic, the Titanic dataset is a popular choice amongst students because it is relatively easy to understand the data. This dataset covers [the tragedy of the Titanic](https://en.wikipedia.org/wiki/Titanic) sinking to the bottom of the ocean in 1912. You might wondering, "Isn't this the same tragedy that was covered in the popular 1997 film starring Kate Winslet and Leo DiCaps?" Why yes, my friend, tis indeed the same tragedy.
@@ -31,3 +31,23 @@ And I haven't committed to the following yet, but I think it'd also be cool to m
 - Deploying the model to **Google Cloud Platform** as a real-time endpoint
 - Deploying the model to **Kubernetes** as a scheduled batch cronjob
 - Deploying the model to AWS as a **scheduled SageMaker batch inference job**
+
+
+
+# Data Dictionary
+
+As mentioned above, this dataset was [sourced from Kaggle](https://www.kaggle.com/c/titanic/data). For your convenience, I have placed the raw datasets (`train.csv` and `test.csv`) in the `data/raw/` directory of this repository. Additionally, I have also shared the same data dictionary here as part of this repo, and I also note in the table below whether or not the feature is included as part of the end model.
+
+| **Feature Name** | **Description** | **Key** | **Included in Model?** |
+| ---------------- | --------------- | ------- | ---------------------- |
+| `survival` | Binary indicator denoting the person's survival | 0 = No, 1 = Yes | ✅ |
+| `pclass` | Ticket class, also a proxy for socio-economic status (SES) | 1 = 1st, 2 = 2nd, 3 = 3rd | ✅ |
+| `sex` | Gender of the person (only male or female recorded) | | ✅ |
+| `sibsp` | Number of siblings / spouses aboard the Titanic* | | ✅ |
+| `parch` | Number of parents / children aboard the Titanic | | ✅ |
+| `ticket` | Ticket number | | ❌ |
+| `fare` | Passenger fare in dollars | | ✅ |
+| `cabin` | Passenger's cabin number | | ❌ |
+| `embarked` | Passenger's port of embarkation | C = Cherbourge, Q = Queenstown, S = Southampton | ✅ |
+
+**Funnily enough, Kaggle's official Titanic site notes "mistresses were ignored" for spouse count* 😂
