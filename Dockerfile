@@ -23,3 +23,6 @@ COPY container/ /opt/program
 
 # Setting the working directory to be "opt/program/"
 WORKDIR /opt/program
+
+# Setting the "serve" file to be executable
+RUN chmod +x serve
