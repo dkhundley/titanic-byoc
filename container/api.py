@@ -27,7 +27,7 @@ async def predict(request: Request):
     input_json = await request.json()
 
     # Transforming the input JSON into a Pandas DataFrame
-    input_df = pd.DataFrame(input_json)
+    input_df = pd.DataFrame(input_json, index = [0])
 
     # Getting the prediction from the Titanic model
     pred = int(rfc_pipeline.predict(input_df)[0])
